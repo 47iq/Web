@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Web programming - lab 1</title>
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+<script src="client.js"></script>
+<table class="main-table" align="center">
+    <th colspan="2">
+        <p id="author" class="main-table">
+            Danilov Pavel Iurievich, P3210, task variant 10109
+        </p>
+    </th>
+    <tr>
+        <td>
+            <img src="images/task.png" width="500" class="main-table">
+        </td>
+        <td>
+            <p class="main-table" id="enter-text">Enter values.</p>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <div class="main-table">
+                <p class="variable">X=<input type="checkbox" value="-4" checked name="check_boxes">-4
+                    <input type="checkbox" value="-3" name="check_boxes">-3
+                    <input type="checkbox" value="-2" name="check_boxes">-2
+                    <input type="checkbox" value="-1" name="check_boxes">-1
+                    <input type="checkbox" value="0" name="check_boxes">0
+                    <input type="checkbox" value="1" name="check_boxes">1
+                    <input type="checkbox" value="2" name="check_boxes">2
+                    <input type="checkbox" value="3" name="check_boxes">3
+                    <input type="checkbox" value="4" name="check_boxes">4
+                    <br></p>
+                <p class="variable">Y=<input type="text" placeholder=" " id="y"><br></p>
+                <p class="variable">R=<input type="radio" value="1" checked name="radio_buttons">1
+                    <input type="radio" value="1.5" name="radio_buttons">1.5
+                    <input type="radio" value="2" name="radio_buttons">2
+                    <input type="radio" value="2.5" name="radio_buttons">2.5
+                    <input type="radio" value="3" name="radio_buttons">3
+                    <br></p>
+                <button id="button" type="submit">✔️</button>
+                <button id="cleaningbutton" type="submit">🧹️</button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <table align="center" class="not-main-table">
+                <tr>
+                    <th class="variable">X</th>
+                    <th class="variable">Y</th>
+                    <th class="variable">R</th>
+                    <th>Result</th>
+                    <th>Time</th>
+                    <th>Calculation time</th>
+                </tr>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

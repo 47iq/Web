@@ -1,0 +1,71 @@
+body {
+    background-image: url(images/wallpaper.jpg);
+    background-size: 100%;
+    background-repeat: repeat;
+    font-family: monospace; /*наследование (шрифт)*/
+}
+
+#author { /*селектор идентификаторов*/
+    font-family: monospace;
+    font-weight: bolder;
+    font-size: 200%;
+    text-decoration: underline overline;
+    color: #020365;
+    background-color: #b4cdff;
+}
+
+.main-table { /*селектор классов*/
+    text-align: center;
+}
+
+#enter-text {
+    !important text-align: left; /*каскадирование*/
+    font-size: 200%;
+    color: #020365;
+    background-color: #b4cdff;
+}
+
+th.variable::after { /*селектор псевдоэлементов*/
+    content: " (var)";
+}
+
+button { /*селектор  элементов*/
+    color: black;
+    text-align: center;
+    padding: 1% 2%;
+    margin: 2%;
+    background: white;
+    border: outset #04b3ff;
+    cursor: pointer;
+    border-radius: 30px;
+}
+
+div input { /*селектор потомков*/
+    color: #020365;
+    border-width: thick;
+    border-style: solid;
+    border-color: #04b3ff;
+    font-size: 100%;
+}
+
+div p {
+    font-size: 100%;
+}
+
+.not-main-table {
+    font-size: 100%;
+    border: solid #04b3ff;
+    border-spacing: 10px;
+    border-collapse: separate;
+    text-align: center;
+    color: #020365;
+    font-style: normal;
+}
+
+#select {
+    font-size: 100%;
+}
+
+#time {
+    color: #020365;
+}
