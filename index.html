@@ -7,23 +7,26 @@
 </head>
 <body>
 <script src="client.js"></script>
-<table class="main-table" align="center">
+<table class="page_table" align="center">
+    <tr>
     <th colspan="2">
-        <p id="author" class="main-table">
-            Danilov Pavel Iurievich, P3210, task variant 10109
+        <p id="author" class="page_table">
+            Danilov Pavel Iurievich, P3210, v. 10109
         </p>
     </th>
     <tr>
         <td>
-            <img src="images/task.png" width="500" class="main-table">
+            <img src="images/task.png" class="page_table">
         </td>
+    </tr>
+    <tr>
         <td>
-            <p class="main-table" id="enter-text">Enter values.</p>
+            <p class="page_table" id="enter-text">Enter values:</p>
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <div class="main-table">
+            <div class="page_table">
                 <p class="variable">X=<input type="checkbox" value="-4" checked name="check_boxes">-4
                     <input type="checkbox" value="-3" name="check_boxes">-3
                     <input type="checkbox" value="-2" name="check_boxes">-2
@@ -34,27 +37,27 @@
                     <input type="checkbox" value="3" name="check_boxes">3
                     <input type="checkbox" value="4" name="check_boxes">4
                     <br></p>
-                <p class="variable">Y=<input type="text" placeholder=" " id="y"><br></p>
+                <p class="variable">Y=<input type="text" placeholder="Enter y:" id="y"><br></p>
                 <p class="variable">R=<input type="radio" value="1" checked name="radio_buttons">1
                     <input type="radio" value="1.5" name="radio_buttons">1.5
                     <input type="radio" value="2" name="radio_buttons">2
                     <input type="radio" value="2.5" name="radio_buttons">2.5
                     <input type="radio" value="3" name="radio_buttons">3
                     <br></p>
-                <button id="button" type="submit">✔️</button>
-                <button id="cleaningbutton" type="submit">🧹️</button>
+                <button id="button" type="submit">Submit️</button>
+                <button id="cleaningbutton" type="submit">Clean </button>
             </div>
         </td>
     </tr>
     <tr>
         <td colspan="2">
-            <table align="center" class="not-main-table">
+            <table align="center" class="result_table">
                 <tr>
                     <th class="variable">X</th>
                     <th class="variable">Y</th>
                     <th class="variable">R</th>
                     <th>Result</th>
-                    <th>Time</th>
+                    <th>Submission time</th>
                     <th>Calculation time</th>
                 </tr>
             </table>

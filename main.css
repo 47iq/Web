@@ -1,3 +1,11 @@
+:root {
+    --primary-color: #020476;
+    --background-color: #bfe2fc;
+    --borders-color: #04b3ff;
+    --text-color: black;
+    --button-background-color: white;
+}
+
 body {
     background-image: url(images/wallpaper.jpg);
     background-size: 100%;
@@ -6,23 +14,29 @@ body {
 }
 
 #author { /*селектор идентификаторов*/
+    border: solid;
+    border-color: var(--borders-color);
+    border-radius: 1px;
     font-family: monospace;
     font-weight: bolder;
     font-size: 200%;
-    text-decoration: underline overline;
-    color: #020365;
-    background-color: #b4cdff;
+    color: var(--primary-color);
+    background-color: var(--background-color);
 }
 
-.main-table { /*селектор классов*/
+.page_table { /*селектор классов*/
     text-align: center;
 }
 
 #enter-text {
+    /*border: solid;
+    background-color: var(--background-color);
+    border-color: var(--borders-color);
+    border-radius: 10px;*/
     !important text-align: left; /*каскадирование*/
     font-size: 200%;
-    color: #020365;
-    background-color: #b4cdff;
+    color: var(--primary-color);
+
 }
 
 th.variable::after { /*селектор псевдоэлементов*/
@@ -30,42 +44,38 @@ th.variable::after { /*селектор псевдоэлементов*/
 }
 
 button { /*селектор  элементов*/
-    color: black;
+    color: var(--text-color);
     text-align: center;
     padding: 1% 2%;
     margin: 2%;
-    background: white;
-    border: outset #04b3ff;
+    background: var(--button-background-color);
+    border: outset;
+    border-color: var(--borders-color);
     cursor: pointer;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 div input { /*селектор потомков*/
-    color: #020365;
+    color: var(--primary-color);
     border-width: thick;
-    border-style: solid;
-    border-color: #04b3ff;
-    font-size: 100%;
+    border-style: outset;
+    border-color: var(--borders-color);
+    border-radius: 5px;
+    font-size: 80%;
 }
 
-div p {
+.result_table {
+    width: 100%;
     font-size: 100%;
-}
-
-.not-main-table {
-    font-size: 100%;
-    border: solid #04b3ff;
-    border-spacing: 10px;
-    border-collapse: separate;
+    border: solid;
+    border-color: var(--borders-color);
+    border-radius: 5px;
     text-align: center;
-    color: #020365;
     font-style: normal;
-}
-
-#select {
-    font-size: 100%;
+    color: var(--primary-color);
+    background-color: var(--background-color);
 }
 
 #time {
-    color: #020365;
+    color: var(--primary-color);
 }

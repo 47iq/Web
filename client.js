@@ -2,22 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("button").addEventListener("click", submit);
 });
 
-function checkX() {
-    let xButtons = document.getElementsByName("check_boxes");
-    let checkCounter = 0
-    let result = true
-    xButtons.forEach(x => {
-        if(x.checked) {
-            checkCounter++
-            if(checkCounter === 2) {
-                alert("Выберите одно значение X!");
-                result = false
-            }
-        }
-    })
-    return result;
-}
-
 function submit() {
     if (checkY() && checkX()) {
         let xButtons = document.getElementsByName("check_boxes");
@@ -36,10 +20,10 @@ function submit() {
                 params += r.value
         })
         let request = new XMLHttpRequest();
-        request.open('GET', 'server.php' + params);
+        request.open('GET', 'calculator.php' + params);
         request.onreadystatechange = function () {
             if (request.readyState === 4 && request.status === 200) {
-                document.querySelector(".not-main-table").innerHTML = request.responseText;
+                document.querySelector(".result_table").innerHTML = request.responseText;
             }
         }
         request.send();
@@ -56,7 +40,7 @@ function clean() {
     cleaningrequest.open('GET', 'clear.php');
     cleaningrequest.onreadystatechange = function () {
         if (cleaningrequest.readyState === 4 && cleaningrequest.status === 200) {
-            document.querySelector(".not-main-table").innerHTML = cleaningrequest.responseText;
+            document.querySelector(".result_table").innerHTML = cleaningrequest.responseText;
         }
     }
     cleaningrequest.send(cleaningform);
@@ -65,14 +49,28 @@ function clean() {
 function checkY() {
     let y = document.getElementById("y");
     if (y.value.trim() === "") {
-        alert("Y не должен быть пустым!");
+        alert("Y field must be filled!");
         return false;
     } else if (!isFinite(y.value.replace(',', '.'))) {
-        alert("Y должен быть числом!");
+        alert("Y must be a number!");
     } else if (y.value.replace(',', '.') >= 5 || y.value.replace(',', '.') <= -5) {
-        alert("Y должен быть в диапазоне (-5; 5)");
+        alert("Y must be in range: (-5; 5)!");
         return false;
     } else {
         return true;
     }
+}
+
+function checkX() {
+    let xButtons = document.getElementsByName("check_boxes");
+    let checkCounter = 0
+    xButtons.forEach(x => {
+        if(x.checked)
+            checkCounter++
+    })
+    if(checkCounter >= 2) {
+        alert("You must select only one X value!");
+        return  false
+    }
+    return true
 }
