@@ -34,7 +34,7 @@ array_push($_SESSION['data'], $answer);
         <th class="variable">Y</th>
         <th class="variable">R</th>
         <th>Result</th>
-        <th>Submission time</th>
+        <th>Submit time</th>
         <th>Calculation time</th>
     </tr>
     <?php foreach ($_SESSION['data'] as $word) { ?>

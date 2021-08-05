@@ -1,49 +1,41 @@
 document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("button").addEventListener("click", submit);
+    document.getElementById("cleaningbutton").addEventListener("click", clear);
 });
 
 function submit() {
     if (checkY() && checkX()) {
-        let xButtons = document.getElementsByName("check_boxes");
         let params = "?x="
-        xButtons.forEach(x => {
+        document.getElementsByName("check_boxes").forEach(x => {
             if(x.checked) {
                 params += x.value
             }
         })
-        let y = document.getElementById("y").value;
-        params += "&y=" + y.replace(',', '.')
-        let rButtons = document.getElementsByName("radio_buttons");
+        params += "&y=" + document.getElementById("y").value.replace(',', '.')
         params += "&r="
-        rButtons.forEach(r => {
+        document.getElementsByName("radio_buttons").forEach(r => {
             if(r.checked)
                 params += r.value
         })
         let request = new XMLHttpRequest();
         request.open('GET', 'calculator.php' + params);
-        request.onreadystatechange = function () {
-            if (request.readyState === 4 && request.status === 200) {
-                document.querySelector(".result_table").innerHTML = request.responseText;
-            }
-        }
+        request.onreadystatechange = ()  => save_results(request)
         request.send();
     }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    document.getElementById("cleaningbutton").addEventListener("click", clean);
-});
-
-function clean() {
-    let cleaningform = new FormData();
-    let cleaningrequest = new XMLHttpRequest();
-    cleaningrequest.open('GET', 'clear.php');
-    cleaningrequest.onreadystatechange = function () {
-        if (cleaningrequest.readyState === 4 && cleaningrequest.status === 200) {
-            document.querySelector(".result_table").innerHTML = cleaningrequest.responseText;
-        }
+function save_results(request) {
+    if (request.readyState === 4 && request.status === 200) {
+        document.querySelector(".result_table").innerHTML = request.responseText;
     }
-    cleaningrequest.send(cleaningform);
+}
+
+function clear() {
+    let clearing_form = new FormData();
+    let clearing_request = new XMLHttpRequest();
+    clearing_request.open('GET', 'clear.php');
+    clearing_request.onreadystatechange = ()  => save_results(clearing_request)
+    clearing_request.send(clearing_form);
 }
 
 function checkY() {
@@ -51,9 +43,13 @@ function checkY() {
     if (y.value.trim() === "") {
         alert("Y field must be filled!");
         return false;
-    } else if (!isFinite(y.value.replace(',', '.'))) {
+    }
+    let yVal = y.value.replace(',', '.')
+    if (!isFinite(yVal)) {
         alert("Y must be a number!");
-    } else if (y.value.replace(',', '.') >= 5 || y.value.replace(',', '.') <= -5) {
+        return false;
+    }
+    if (yVal >= 5 || yVal <= -5) {
         alert("Y must be in range: (-5; 5)!");
         return false;
     } else {
@@ -70,7 +66,7 @@ function checkX() {
     })
     if(checkCounter >= 2) {
         alert("You must select only one X value!");
-        return  false
+        return false
     }
     return true
 }
