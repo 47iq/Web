@@ -29,11 +29,7 @@ body {
 }
 
 #enter-text {
-    /*border: solid;
-    background-color: var(--background-color);
-    border-color: var(--borders-color);
-    border-radius: 10px;*/
-    !important text-align: left; /*каскадирование*/
+    font-family: sans-serif; /* каскадирование */
     font-size: 200%;
     color: var(--primary-color);
 
@@ -55,7 +51,7 @@ button { /*селектор  элементов*/
     border-radius: 5px;
 }
 
-div input { /*селектор потомков*/
+div input {
     color: var(--primary-color);
     border-width: thick;
     border-style: outset;
