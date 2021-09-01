@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 date_default_timezone_set('Europe/Moscow');
 $start = microtime(true);
@@ -16,8 +15,7 @@ if (!isset($_SESSION['data'])) {
 }
 array_push($_SESSION['data'], $answer);
 
-function check($x, $y, $r): string
-{
+function check($x, $y, $r) {
     if ((($x <= $r) && ($x >= 0) && ($y <= 0) && ($y >= -$r))
         || (($x <= 0) && ($y >= 0) && ($x * $x + $y * $y <= $r * $r)) ||
         (($y >= -$r / 2) && ($y <= 0) && ($x >= -$r) && ($x <= 0) && ($x + 2 * $y >= -$r))) {
