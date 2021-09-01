@@ -50,6 +50,9 @@ function checkX() {
     if (checkCounter >= 2) {
         alert("You must select only one X value!")
         return false
+    } else  if (checkCounter === 0) {
+        alert("You must select the X value!")
+        return false
     }
     return true
 }

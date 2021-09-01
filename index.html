@@ -1,26 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta content="Web programming first lab" name="description">
+    <meta content="Danilov Pavel Iurievich" name="author">
     <title>Web programming - lab 1</title>
     <link rel="stylesheet" href="main.css">
 </head>
+
 <body>
+
 <script src="client.js"></script>
-<table class="page_table" align="center">
-    <thead>
-    <tr>
-        <th colspan="2">
-            <p id="author" class="page_table">
-                Danilov Pavel Iurievich, P3210, v. 10109
-            </p>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
+
+<header>
+    <span id="author">
+        Danilov Pavel Iurievich, P3210, v. 10109
+    </span>
+</header>
+
+<table class="page_table">
     <tr>
         <td>
-            <img src="images/task.png" class="page_table">
+            <img src="images/task.png" class="page_table" alt="">
         </td>
     </tr>
     <tr>
@@ -30,36 +32,81 @@
     </tr>
     <tr>
         <td>
-            <div class="page_table">
-                <p class="variable">X=
-                    <input type="checkbox" value="-4" checked name="check_boxes">-4
-                    <input type="checkbox" value="-3" name="check_boxes">-3
-                    <input type="checkbox" value="-2" name="check_boxes">-2
-                    <input type="checkbox" value="-1" name="check_boxes">-1
-                    <input type="checkbox" value="0" name="check_boxes">0
-                    <input type="checkbox" value="1" name="check_boxes">1
-                    <input type="checkbox" value="2" name="check_boxes">2
-                    <input type="checkbox" value="3" name="check_boxes">3
-                    <input type="checkbox" value="4" name="check_boxes">4
-                </p>
-                <p class="variable">Y=
-                    <input type="text" placeholder="Enter y:" id="y">
-                </p>
-                <p class="variable">R=
-                    <input type="radio" value="1" checked name="radio_buttons">1
-                    <input type="radio" value="1.5" name="radio_buttons">1.5
-                    <input type="radio" value="2" name="radio_buttons">2
-                    <input type="radio" value="2.5" name="radio_buttons">2.5
-                    <input type="radio" value="3" name="radio_buttons">3
-                </p>
-                <button id="button" type="submit">Submit</button>
-                <button id="cleaning_button" type="submit">Clean</button>
-            </div>
+            <table class="vars_table">
+                <tr>
+                    <td colspan="2">
+                        <p class="variable">X=
+                            <label>
+                                <input type="checkbox" value="-4" name="check_boxes">
+                            </label>-4
+                            <label>
+                                <input type="checkbox" value="-3" name="check_boxes">
+                            </label>-3
+                            <label>
+                                <input type="checkbox" value="-2" name="check_boxes">
+                            </label>-2
+                            <label>
+                                <input type="checkbox" value="-1" name="check_boxes">
+                            </label>-1
+                            <label>
+                                <input type="checkbox" value="0" name="check_boxes">
+                            </label>0
+                            <label>
+                                <input type="checkbox" value="1" name="check_boxes">
+                            </label>1
+                            <label>
+                                <input type="checkbox" value="2" name="check_boxes">
+                            </label>2
+                            <label>
+                                <input type="checkbox" value="3" name="check_boxes">
+                            </label>3
+                            <label>
+                                <input type="checkbox" value="4" name="check_boxes">
+                            </label>4
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="variable">Y=
+                            <label for="y"></label><input id="y" type="text" placeholder="Enter y:">
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p class="variable">R=
+                            <label>
+                                <input type="radio" value="1" name="radio_buttons">
+                            </label>1
+                            <label>
+                                <input type="radio" value="1.5" name="radio_buttons">
+                            </label>1.5
+                            <label>
+                                <input type="radio" value="2" name="radio_buttons">
+                            </label>2
+                            <label>
+                                <input type="radio" value="2.5" name="radio_buttons">
+                            </label>2.5
+                            <label>
+                                <input type="radio" value="3" checked name="radio_buttons">
+                            </label>3
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="button" type="submit">Submit</button>
+                    </td>
+                    <td>
+                        <button id="cleaning_button" type="submit">Clean</button>
+                    </td>
+                </tr>
+            </table>
         </td>
-    </tr>
     <tr>
         <td>
-            <table align="center" class="result_table">
+            <table class="result_table">
                 <tr>
                     <th class="variable">X</th>
                     <th class="variable">Y</th>
@@ -71,7 +118,6 @@
             </table>
         </td>
     </tr>
-    </tbody>
 </table>
 </body>
 </html>

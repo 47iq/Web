@@ -3,9 +3,9 @@
 session_start();
 date_default_timezone_set('Europe/Moscow');
 $start = microtime(true);
-$x = (float)$_GET['x'];
-$y = (float)$_GET['y'];
-$r = (float)$_GET['r'];
+$x = (float)$_REQUEST['x'];
+$y = (float)$_REQUEST['y'];
+$r = (float)$_REQUEST['r'];
 $result = check($x, $y, $r);
 $now = date("H:i:s");
 $now .= "⏰";
