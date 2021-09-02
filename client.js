@@ -11,7 +11,7 @@ function submit() {
                 params += x.value
             }
         })
-        params += "&y=" + document.getElementById("y").value.replace(',', '.')
+        params += "&y=" + parseFloat(document.getElementById("y").value.substring(0, 12).replace(',', '.'))
         params += "&r="
         document.getElementsByName("radio_buttons").forEach(r => {
             if (r.checked)
@@ -27,7 +27,7 @@ function checkY() {
         alert("Y field must be filled!")
         return false;
     }
-    let yVal = y.value.replace(',', '.')
+    let yVal = y.value.replace(',', '.').substring(0, 12)
     if (!isFinite(yVal)) {
         alert("Y must be a number!")
         return false;
@@ -38,6 +38,8 @@ function checkY() {
     } else {
         return true
     }
+
+
 }
 
 function checkX() {
@@ -50,7 +52,7 @@ function checkX() {
     if (checkCounter >= 2) {
         alert("You must select only one X value!")
         return false
-    } else  if (checkCounter === 0) {
+    } else if (checkCounter === 0) {
         alert("You must select the X value!")
         return false
     }
@@ -68,12 +70,19 @@ function send_request(method, url, params = '') {
                 resolve(xhr)
         }
         xhr.onerror = () => {
-            reject()
+            reject(xhr)
         }
         xhr.send();
     }).then(xhr => {
-        document.querySelector(".result_table").innerHTML = xhr.responseText
-    }).catch(() => {
-        alert("Unexpected error")
+        let response = xhr.responseText
+        if (response !== "")
+            document.querySelector(".result_table").innerHTML = response
+        else
+            alert("Error in the request")
+    }).catch((xhr) => {
+        if(xhr.status === 400)
+            alert("Error in the request")
+        else
+            alert("Unknown Error")
     })
 }

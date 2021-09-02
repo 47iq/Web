@@ -2,27 +2,53 @@
 session_start();
 date_default_timezone_set('Europe/Moscow');
 $start = microtime(true);
-$x = (float)$_REQUEST['x'];
-$y = (float)$_REQUEST['y'];
-$r = (float)$_REQUEST['r'];
-$result = check($x, $y, $r);
+$isValid = true;
+$xStr = $_REQUEST['x'];
+$yStr = $_REQUEST['y'];
+$rStr = $_REQUEST['r'];
+$x = $xStr;
+$y = $yStr;
+$r = $rStr;
+$out = "";
 $now = date("H:i:s");
 $now .= "⏰";
-$time =  microtime(true) - $start;
-$answer = array($x, $y, $r, check($x, $y, $r), $now, $time);
+$response = "";
+$maximum = 12;
 if (!isset($_SESSION['data'])) {
     $_SESSION['data'] = array();
 }
-array_push($_SESSION['data'], $answer);
 
-function check($x, $y, $r) {
+if ($_SERVER['REQUEST_METHOD'] === 'GET') {
+
+    if (!is_numeric($x) || !is_numeric($y) || !is_numeric($r))
+        $isValid = false;
+    if (strlen($y) > $maximum || strlen($x) > $maximum || strlen($r) > $maximum)
+        $isValid = false;
+
+    if ($x < -4 || $x > 4)
+        $isValid = false;
+    if ($r < 1 || $r > 3)
+        $isValid = false;
+    if ($y < -5 || $y > 5)
+        $isValid = false;
+
+    if(!$isValid) {
+        header("Status: 400 Bad Request", true, 400);
+        exit;
+    }
+
+
     if ((($x <= $r) && ($x >= 0) && ($y <= 0) && ($y >= -$r))
         || (($x <= 0) && ($y >= 0) && ($x * $x + $y * $y <= $r * $r)) ||
         (($y >= -$r / 2) && ($y <= 0) && ($x >= -$r) && ($x <= 0) && ($x + 2 * $y >= -$r))) {
-        return "<span style='color: lime'>True</span>";
+        $out = "<span style='color: lime'>True</span>";
     } else {
-        return "<span style='color: red'>False</span>";
+        $out = "<span style='color: red'>False</span>";
     }
+
+    $calc_time =  microtime(true) - $start;
+    $answer = array($xStr, $yStr, $rStr, $out, $now, $calc_time);
+    array_push($_SESSION['data'], $answer);
 }
 ?>
 <table align="center" class="result_table">
@@ -45,3 +71,4 @@ function check($x, $y, $r) {
         </tr>
     <?php } ?>
 </table>
+
